@@ -1,0 +1,52 @@
+name: kraken
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.19.6 <3.0.0"
+
+dependencies:
+  auto_route: ^6.4.0
+  cross_connectivity: ^3.0.5
+  cupertino_icons: ^1.0.6
+  easy_localization: ^3.0.7
+  equatable: ^2.0.5
+  firebase_core: ^2.24.2
+  firebase_crashlytics: ^3.4.9
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.6
+  flutter_hooks: ^0.20.5
+  flutter_screenutil: ^5.7.0
+  fpdart: ^0.6.0
+  freezed_annotation: ^2.4.1
+  get_it: ^7.6.0
+  injectable: ^2.1.2
+  json_annotation: ^4.8.1
+
+dev_dependencies:
+  auto_route_generator: ^6.2.0
+  build_runner: ^2.3.3
+  flutter_gen_runner: ^5.4.0
+  flutter_test:
+    sdk: flutter
+  freezed: ^2.4.1
+  injectable_generator: ^2.1.6
+  json_serializable: ^6.6.2
+  lint: ^2.0.20
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/fonts/
+    - assets/langs/
+
+flutter_gen:
+  assets:
+    enabled: true
