@@ -12,6 +12,7 @@ dependencies:
   auto_route: ^6.4.0
   cross_connectivity: ^3.0.5
   cupertino_icons: ^1.0.6
+  dio: ^5.7.0
   easy_localization: ^3.0.7
   equatable: ^2.0.5
   firebase_core: ^2.24.2
