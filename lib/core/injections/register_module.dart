@@ -1,5 +1,8 @@
 import 'package:cross_connectivity/cross_connectivity.dart';
+import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:kraken/constants/durations.dart';
+import 'package:kraken/constants/endpoints.dart';
 
 import '../../router/router.dart';
 
@@ -10,4 +13,15 @@ abstract class RegisterModule {
 
   @lazySingleton
   Connectivity get connectivity;
+
+  @lazySingleton
+  Dio get dio => Dio(
+        BaseOptions(
+          connectTimeout: timeoutDuration,
+          receiveTimeout: timeoutDuration,
+          sendTimeout: timeoutDuration,
+          baseUrl: Endpoints.baseUrl,
+          headers: {'Content-Type': 'application/json; charset=UTF-8'},
+        ),
+      );
 }

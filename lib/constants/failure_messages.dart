@@ -1,11 +1,4 @@
 const noConnectionMessage = 'No internet connection';
 const connectionTimedOutMessage = 'Connection timed out';
 const unknownErrorMessage = 'An unknown error occurred';
-const emailIsNotVerifiedMessage = 'Your email address is not verified';
-const invalidEmailMessage = 'This email format is not supported. Please try again with a different email address';
-const emailAlreadyInUseMessage = 'An account is already registered with this email address';
-const userDisabledMessage = 'This account has been disabled';
-const invalidEmailOrPasswordMessage = 'Invalid email address or password';
-const userNotFoundMessage = 'No account is registered with this email address';
-const invalidCredentialMessage = 'The credential is invalid or has expired';
-const biometricAuthFailureMessage = 'Biometric authentication failed';
+const responseErrorMessage = 'An error occurred while processing the response';
