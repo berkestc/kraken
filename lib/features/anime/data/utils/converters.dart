@@ -5,13 +5,13 @@ class LargeImageUrlConverter implements JsonConverter<String, Map<String, dynami
 
   @override
   String fromJson(Map<String, dynamic> json) {
-    return (json["jpeg"] as Map<String, dynamic>)["large_image_url"] as String;
+    return (json["jpg"] as Map<String, dynamic>)["large_image_url"] as String;
   }
 
   @override
   Map<String, dynamic> toJson(String object) {
     return {
-      "jpeg": {"large_image_url": object}
+      "jpg": {"large_image_url": object}
     };
   }
 }
@@ -21,13 +21,13 @@ class ImageUrlConverter implements JsonConverter<String, Map<String, dynamic>> {
 
   @override
   String fromJson(Map<String, dynamic> json) {
-    return (json["jpeg"] as Map<String, dynamic>)["image_url"] as String;
+    return (json["jpg"] as Map<String, dynamic>)["image_url"] as String;
   }
 
   @override
   Map<String, dynamic> toJson(String object) {
     return {
-      "jpeg": {"image_url": object}
+      "jpg": {"image_url": object}
     };
   }
 }

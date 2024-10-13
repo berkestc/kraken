@@ -1,11 +1,12 @@
 import 'package:equatable/equatable.dart';
+import 'package:fpdart/fpdart.dart';
 
 import 'genre.dart';
 
 class Anime extends Equatable {
   final int id;
-  final int rank;
-  final int episodes;
+  final Option<int> rank;
+  final Option<int> episodes;
   final String title;
   final String imageUrl;
   final String synopsis;

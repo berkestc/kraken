@@ -22,8 +22,6 @@ AnimeDto _$AnimeDtoFromJson(Map<String, dynamic> json) {
 mixin _$AnimeDto {
   @JsonKey(name: "mal_id")
   int get id => throw _privateConstructorUsedError;
-  int get rank => throw _privateConstructorUsedError;
-  int get episodes => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   @LargeImageUrlConverter()
   @JsonKey(name: "images")
@@ -31,6 +29,8 @@ mixin _$AnimeDto {
   String get synopsis => throw _privateConstructorUsedError;
   double get score => throw _privateConstructorUsedError;
   List<GenreDto> get genres => throw _privateConstructorUsedError;
+  int? get episodes => throw _privateConstructorUsedError;
+  int? get rank => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,13 +45,13 @@ abstract class $AnimeDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "mal_id") int id,
-      int rank,
-      int episodes,
       String title,
       @LargeImageUrlConverter() @JsonKey(name: "images") String imageUrl,
       String synopsis,
       double score,
-      List<GenreDto> genres});
+      List<GenreDto> genres,
+      int? episodes,
+      int? rank});
 }
 
 /// @nodoc
@@ -68,26 +68,18 @@ class _$AnimeDtoCopyWithImpl<$Res, $Val extends AnimeDto>
   @override
   $Res call({
     Object? id = null,
-    Object? rank = null,
-    Object? episodes = null,
     Object? title = null,
     Object? imageUrl = null,
     Object? synopsis = null,
     Object? score = null,
     Object? genres = null,
+    Object? episodes = freezed,
+    Object? rank = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      rank: null == rank
-          ? _value.rank
-          : rank // ignore: cast_nullable_to_non_nullable
-              as int,
-      episodes: null == episodes
-          ? _value.episodes
-          : episodes // ignore: cast_nullable_to_non_nullable
               as int,
       title: null == title
           ? _value.title
@@ -109,6 +101,14 @@ class _$AnimeDtoCopyWithImpl<$Res, $Val extends AnimeDto>
           ? _value.genres
           : genres // ignore: cast_nullable_to_non_nullable
               as List<GenreDto>,
+      episodes: freezed == episodes
+          ? _value.episodes
+          : episodes // ignore: cast_nullable_to_non_nullable
+              as int?,
+      rank: freezed == rank
+          ? _value.rank
+          : rank // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -122,13 +122,13 @@ abstract class _$$_AnimeDtoCopyWith<$Res> implements $AnimeDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "mal_id") int id,
-      int rank,
-      int episodes,
       String title,
       @LargeImageUrlConverter() @JsonKey(name: "images") String imageUrl,
       String synopsis,
       double score,
-      List<GenreDto> genres});
+      List<GenreDto> genres,
+      int? episodes,
+      int? rank});
 }
 
 /// @nodoc
@@ -143,26 +143,18 @@ class __$$_AnimeDtoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? rank = null,
-    Object? episodes = null,
     Object? title = null,
     Object? imageUrl = null,
     Object? synopsis = null,
     Object? score = null,
     Object? genres = null,
+    Object? episodes = freezed,
+    Object? rank = freezed,
   }) {
     return _then(_$_AnimeDto(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      rank: null == rank
-          ? _value.rank
-          : rank // ignore: cast_nullable_to_non_nullable
-              as int,
-      episodes: null == episodes
-          ? _value.episodes
-          : episodes // ignore: cast_nullable_to_non_nullable
               as int,
       title: null == title
           ? _value.title
@@ -184,6 +176,14 @@ class __$$_AnimeDtoCopyWithImpl<$Res>
           ? _value._genres
           : genres // ignore: cast_nullable_to_non_nullable
               as List<GenreDto>,
+      episodes: freezed == episodes
+          ? _value.episodes
+          : episodes // ignore: cast_nullable_to_non_nullable
+              as int?,
+      rank: freezed == rank
+          ? _value.rank
+          : rank // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -193,13 +193,13 @@ class __$$_AnimeDtoCopyWithImpl<$Res>
 class _$_AnimeDto extends _AnimeDto {
   const _$_AnimeDto(
       {@JsonKey(name: "mal_id") required this.id,
-      required this.rank,
-      required this.episodes,
       required this.title,
       @LargeImageUrlConverter() @JsonKey(name: "images") required this.imageUrl,
       required this.synopsis,
       required this.score,
-      required final List<GenreDto> genres})
+      required final List<GenreDto> genres,
+      this.episodes,
+      this.rank})
       : _genres = genres,
         super._();
 
@@ -209,10 +209,6 @@ class _$_AnimeDto extends _AnimeDto {
   @override
   @JsonKey(name: "mal_id")
   final int id;
-  @override
-  final int rank;
-  @override
-  final int episodes;
   @override
   final String title;
   @override
@@ -232,8 +228,13 @@ class _$_AnimeDto extends _AnimeDto {
   }
 
   @override
+  final int? episodes;
+  @override
+  final int? rank;
+
+  @override
   String toString() {
-    return 'AnimeDto(id: $id, rank: $rank, episodes: $episodes, title: $title, imageUrl: $imageUrl, synopsis: $synopsis, score: $score, genres: $genres)';
+    return 'AnimeDto(id: $id, title: $title, imageUrl: $imageUrl, synopsis: $synopsis, score: $score, genres: $genres, episodes: $episodes, rank: $rank)';
   }
 
   @override
@@ -242,22 +243,22 @@ class _$_AnimeDto extends _AnimeDto {
         (other.runtimeType == runtimeType &&
             other is _$_AnimeDto &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.rank, rank) || other.rank == rank) &&
-            (identical(other.episodes, episodes) ||
-                other.episodes == episodes) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             (identical(other.synopsis, synopsis) ||
                 other.synopsis == synopsis) &&
             (identical(other.score, score) || other.score == score) &&
-            const DeepCollectionEquality().equals(other._genres, _genres));
+            const DeepCollectionEquality().equals(other._genres, _genres) &&
+            (identical(other.episodes, episodes) ||
+                other.episodes == episodes) &&
+            (identical(other.rank, rank) || other.rank == rank));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, rank, episodes, title,
-      imageUrl, synopsis, score, const DeepCollectionEquality().hash(_genres));
+  int get hashCode => Object.hash(runtimeType, id, title, imageUrl, synopsis,
+      score, const DeepCollectionEquality().hash(_genres), episodes, rank);
 
   @JsonKey(ignore: true)
   @override
@@ -276,15 +277,15 @@ class _$_AnimeDto extends _AnimeDto {
 abstract class _AnimeDto extends AnimeDto {
   const factory _AnimeDto(
       {@JsonKey(name: "mal_id") required final int id,
-      required final int rank,
-      required final int episodes,
       required final String title,
       @LargeImageUrlConverter()
       @JsonKey(name: "images")
       required final String imageUrl,
       required final String synopsis,
       required final double score,
-      required final List<GenreDto> genres}) = _$_AnimeDto;
+      required final List<GenreDto> genres,
+      final int? episodes,
+      final int? rank}) = _$_AnimeDto;
   const _AnimeDto._() : super._();
 
   factory _AnimeDto.fromJson(Map<String, dynamic> json) = _$_AnimeDto.fromJson;
@@ -292,10 +293,6 @@ abstract class _AnimeDto extends AnimeDto {
   @override
   @JsonKey(name: "mal_id")
   int get id;
-  @override
-  int get rank;
-  @override
-  int get episodes;
   @override
   String get title;
   @override
@@ -308,6 +305,10 @@ abstract class _AnimeDto extends AnimeDto {
   double get score;
   @override
   List<GenreDto> get genres;
+  @override
+  int? get episodes;
+  @override
+  int? get rank;
   @override
   @JsonKey(ignore: true)
   _$$_AnimeDtoCopyWith<_$_AnimeDto> get copyWith =>
