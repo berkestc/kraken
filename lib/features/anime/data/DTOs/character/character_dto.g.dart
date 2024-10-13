@@ -11,12 +11,12 @@ _$_CharacterDto _$$_CharacterDtoFromJson(Map<String, dynamic> json) =>
       id: json['mal_id'] as int,
       name: json['name'] as String,
       imageUrl: const ImageUrlConverter()
-          .fromJson(json['imageUrl'] as Map<String, dynamic>),
+          .fromJson(json['images'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_CharacterDtoToJson(_$_CharacterDto instance) =>
     <String, dynamic>{
       'mal_id': instance.id,
       'name': instance.name,
-      'imageUrl': const ImageUrlConverter().toJson(instance.imageUrl),
+      'images': const ImageUrlConverter().toJson(instance.imageUrl),
     };

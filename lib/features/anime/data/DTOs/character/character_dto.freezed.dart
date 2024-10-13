@@ -24,6 +24,7 @@ mixin _$CharacterDto {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   @ImageUrlConverter()
+  @JsonKey(name: "images")
   String get imageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,7 +42,7 @@ abstract class $CharacterDtoCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "mal_id") int id,
       String name,
-      @ImageUrlConverter() String imageUrl});
+      @ImageUrlConverter() @JsonKey(name: "images") String imageUrl});
 }
 
 /// @nodoc
@@ -89,7 +90,7 @@ abstract class _$$_CharacterDtoCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "mal_id") int id,
       String name,
-      @ImageUrlConverter() String imageUrl});
+      @ImageUrlConverter() @JsonKey(name: "images") String imageUrl});
 }
 
 /// @nodoc
@@ -130,7 +131,7 @@ class _$_CharacterDto extends _CharacterDto {
   const _$_CharacterDto(
       {@JsonKey(name: "mal_id") required this.id,
       required this.name,
-      @ImageUrlConverter() required this.imageUrl})
+      @ImageUrlConverter() @JsonKey(name: "images") required this.imageUrl})
       : super._();
 
   factory _$_CharacterDto.fromJson(Map<String, dynamic> json) =>
@@ -143,6 +144,7 @@ class _$_CharacterDto extends _CharacterDto {
   final String name;
   @override
   @ImageUrlConverter()
+  @JsonKey(name: "images")
   final String imageUrl;
 
   @override
@@ -183,7 +185,9 @@ abstract class _CharacterDto extends CharacterDto {
   const factory _CharacterDto(
       {@JsonKey(name: "mal_id") required final int id,
       required final String name,
-      @ImageUrlConverter() required final String imageUrl}) = _$_CharacterDto;
+      @ImageUrlConverter()
+      @JsonKey(name: "images")
+      required final String imageUrl}) = _$_CharacterDto;
   const _CharacterDto._() : super._();
 
   factory _CharacterDto.fromJson(Map<String, dynamic> json) =
@@ -196,6 +200,7 @@ abstract class _CharacterDto extends CharacterDto {
   String get name;
   @override
   @ImageUrlConverter()
+  @JsonKey(name: "images")
   String get imageUrl;
   @override
   @JsonKey(ignore: true)

@@ -14,12 +14,12 @@ final lightTitleMedium = TextStyle(
   fontWeight: FontWeight.w600,
   fontSize: fontSize16,
   height: kLineHeight1_5,
-  color: colors.white,
+  color: colors.black900,
 );
 
 final lightTitleLarge = TextStyle(
   fontWeight: FontWeight.w600,
-  fontSize: fontSize17,
+  fontSize: fontSize20,
   height: kLineHeight1_2,
   color: colors.black900,
 );

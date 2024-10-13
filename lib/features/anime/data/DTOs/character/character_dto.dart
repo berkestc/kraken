@@ -11,7 +11,7 @@ class CharacterDto with _$CharacterDto {
   const factory CharacterDto({
     @JsonKey(name: "mal_id") required int id,
     required String name,
-    @ImageUrlConverter() required String imageUrl,
+    @ImageUrlConverter() @JsonKey(name: "images") required String imageUrl,
   }) = _CharacterDto;
 
   const CharacterDto._();

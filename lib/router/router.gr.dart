@@ -15,25 +15,61 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    HomeRoute.name: (routeData) {
+    AnimesDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<AnimesDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: HomePage(),
+        child: AnimesDetailPage(anime: args.anime),
       );
-    }
+    },
+    AnimesRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: AnimesPage(),
+      );
+    },
   };
 }
 
 /// generated route for
-/// [HomePage]
-class HomeRoute extends PageRouteInfo<void> {
-  const HomeRoute({List<PageRouteInfo>? children})
-      : super(
-          HomeRoute.name,
+/// [AnimesDetailPage]
+class AnimesDetailRoute extends PageRouteInfo<AnimesDetailRouteArgs> {
+  AnimesDetailRoute({
+    required Anime anime,
+    List<PageRouteInfo>? children,
+  }) : super(
+          AnimesDetailRoute.name,
+          args: AnimesDetailRouteArgs(anime: anime),
           initialChildren: children,
         );
 
-  static const String name = 'HomeRoute';
+  static const String name = 'AnimesDetailRoute';
+
+  static const PageInfo<AnimesDetailRouteArgs> page =
+      PageInfo<AnimesDetailRouteArgs>(name);
+}
+
+class AnimesDetailRouteArgs {
+  const AnimesDetailRouteArgs({required this.anime});
+
+  final Anime anime;
+
+  @override
+  String toString() {
+    return 'AnimesDetailRouteArgs{anime: $anime}';
+  }
+}
+
+/// generated route for
+/// [AnimesPage]
+class AnimesRoute extends PageRouteInfo<void> {
+  const AnimesRoute({List<PageRouteInfo>? children})
+      : super(
+          AnimesRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AnimesRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
