@@ -5,7 +5,11 @@ import '../../../../core/models/failure/failure.dart';
 import '../models/anime.dart';
 import '../models/character.dart';
 
+typedef OnAnimesFetched = void Function(Either<Failure, Paginated<Anime>>);
+
 abstract class AnimeRepository {
-  Future<Either<Failure, Paginated<Anime>>> getAnimes({int page = 1});
+  Future<void> sendFetchAnimeListRequest({int page = 1});
+  void setOnAnimesFetched(OnAnimesFetched onAnimesFetched);
+
   Future<Either<Failure, List<Character>>> getCharacters(int animeId);
 }

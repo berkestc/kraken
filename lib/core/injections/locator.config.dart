@@ -15,14 +15,16 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
 import '../../features/anime/data/repositories/anime_repository_impl.dart'
-    as _i11;
-import '../../features/anime/domain/repositories/anime_repository.dart' as _i10;
+    as _i13;
+import '../../features/anime/domain/repositories/anime_repository.dart' as _i12;
 import '../../router/router.dart' as _i3;
 import '../../services/network/network_info.dart' as _i6;
 import '../../services/network/network_info_impl.dart' as _i7;
 import '../../services/network/network_service.dart' as _i8;
 import '../../services/network/network_service_impl.dart' as _i9;
-import 'register_module.dart' as _i12;
+import '../../services/platform/platform_service.dart' as _i10;
+import '../../services/platform/platform_service_impl.dart' as _i11;
+import 'register_module.dart' as _i14;
 
 extension GetItInjectableX on _i1.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -45,13 +47,16 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i5.Dio>(),
           networkInfo: gh<_i6.NetworkInfo>(),
         ));
-    gh.lazySingleton<_i10.AnimeRepository>(
-        () => _i11.AnimeRepositoryImpl(gh<_i8.NetworkService>()));
+    gh.lazySingleton<_i10.PlatformService>(() => _i11.PlatformServiceImpl());
+    gh.lazySingleton<_i12.AnimeRepository>(() => _i13.AnimeRepositoryImpl(
+          platformService: gh<_i10.PlatformService>(),
+          networkService: gh<_i8.NetworkService>(),
+        ));
     return this;
   }
 }
 
-class _$RegisterModule extends _i12.RegisterModule {
+class _$RegisterModule extends _i14.RegisterModule {
   @override
   _i3.AppRouter get appRouter => _i3.AppRouter();
 

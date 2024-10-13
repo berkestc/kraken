@@ -8,6 +8,7 @@ import 'package:kraken/features/anime/domain/models/anime.dart';
 import 'package:kraken/features/anime/domain/models/character.dart';
 import 'package:kraken/features/anime/domain/models/paginated.dart';
 import 'package:kraken/services/network/network_service.dart';
+import 'package:kraken/services/platform/platform_service.dart';
 
 import '../../../../constants/failure_messages.dart';
 import '../../domain/repositories/anime_repository.dart';
@@ -15,18 +16,30 @@ import '../DTOs/character/character_dto.dart';
 
 @LazySingleton(as: AnimeRepository)
 class AnimeRepositoryImpl implements AnimeRepository {
+  final PlatformService platformService;
   final NetworkService networkService;
 
-  const AnimeRepositoryImpl(this.networkService);
+  OnAnimesFetched? _onAnimesFetched;
+
+  AnimeRepositoryImpl({
+    required this.platformService,
+    required this.networkService,
+  }) {
+    platformService.initialize(_getAnimes);
+  }
 
   @override
-  Future<Either<Failure, Paginated<Anime>>> getAnimes({int page = 1}) async {
-    final result = await networkService.get(
+  Future<void> sendFetchAnimeListRequest({int page = 1}) async {
+    platformService.sendFetchAnimeListRequest(page: page);
+  }
+
+  Future<void> _getAnimes(int page) async {
+    final response = await networkService.get(
       Endpoints.animes,
       queryParameters: {"page": page, "limit": 20},
     );
 
-    return result.fold(
+    final result = response.fold<Either<Failure, Paginated<Anime>>>(
       left,
       (r) {
         try {
@@ -38,6 +51,13 @@ class AnimeRepositoryImpl implements AnimeRepository {
         }
       },
     );
+
+    _onAnimesFetched?.call(result);
+  }
+
+  @override
+  void setOnAnimesFetched(OnAnimesFetched onAnimesFetched) {
+    _onAnimesFetched = onAnimesFetched;
   }
 
   @override

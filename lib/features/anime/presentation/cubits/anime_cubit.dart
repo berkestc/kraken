@@ -1,12 +1,17 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:kraken/features/anime/domain/repositories/anime_repository.dart';
 
+import '../../../../core/models/failure/failure.dart';
+import '../../domain/models/anime.dart';
+import '../../domain/models/paginated.dart';
 import '../states/anime_state.dart';
 
 class AnimeCubit extends Cubit<AnimeState> {
   final AnimeRepository animeRepository;
 
   AnimeCubit({required this.animeRepository}) : super(AnimeState.initial()) {
+    animeRepository.setOnAnimesFetched(_onAnimesFetched);
     getAnimes();
   }
 
@@ -15,8 +20,10 @@ class AnimeCubit extends Cubit<AnimeState> {
 
     emit(state.copyWith(isPaginating: true));
 
-    final result = await animeRepository.getAnimes(page: state.currentPage + 1);
+    await animeRepository.sendFetchAnimeListRequest(page: state.currentPage + 1);
+  }
 
+  void _onAnimesFetched(Either<Failure, Paginated<Anime>> result) {
     emit(
       state.copyWith(
         isPaginating: false,
