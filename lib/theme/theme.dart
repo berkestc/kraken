@@ -74,6 +74,7 @@ final _appBarTheme = AppBarTheme(
   titleTextStyle: lightDisplayMedium,
   iconTheme: _iconThemeData,
   actionsIconTheme: _iconThemeData,
+  centerTitle: false,
   titleSpacing: 20.w,
 );
 

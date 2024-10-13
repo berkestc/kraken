@@ -195,19 +195,21 @@ class _Characters extends StatelessWidget {
 
     if (animeDetailsState.isLoading) return const _Loading();
 
-    return SliverPadding(
-      padding: EdgeInsets.symmetric(horizontal: 8.r),
-      sliver: animeDetailsState.failure.fold(
-        () => SliverGrid.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            crossAxisSpacing: 4.r,
-            childAspectRatio: 0.42,
+    return SliverSafeArea(
+      sliver: SliverPadding(
+        padding: EdgeInsets.symmetric(horizontal: 8.r),
+        sliver: animeDetailsState.failure.fold(
+          () => SliverGrid.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              crossAxisSpacing: 4.r,
+              childAspectRatio: 0.42,
+            ),
+            itemCount: animeDetailsState.characters.length,
+            itemBuilder: (context, index) => _CharacterItem(animeDetailsState.characters[index]),
           ),
-          itemCount: animeDetailsState.characters.length,
-          itemBuilder: (context, index) => _CharacterItem(animeDetailsState.characters[index]),
+          _Failure.new,
         ),
-        _Failure.new,
       ),
     );
   }
