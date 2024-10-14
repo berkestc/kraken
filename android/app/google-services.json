@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "451241798340",
+    "project_id": "kraken-9168b",
+    "storage_bucket": "kraken-9168b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451241798340:android:17adf62ca00ea3169d7791",
+        "android_client_info": {
+          "package_name": "com.example.kraken"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMA0ygvSDpirdgUSZtRL-RB6k5rt1OyJw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

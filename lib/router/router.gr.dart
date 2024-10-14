@@ -19,13 +19,13 @@ abstract class _$AppRouter extends RootStackRouter {
       final args = routeData.argsAs<AnimesDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: AnimesDetailPage(anime: args.anime),
+        child: WrappedRoute(child: AnimesDetailPage(anime: args.anime)),
       );
     },
     AnimesRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: AnimesPage(),
+        child: WrappedRoute(child: AnimesPage()),
       );
     },
   };
