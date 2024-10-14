@@ -27,7 +27,7 @@ Map<String, dynamic> _$$_AnimeDtoToJson(_$_AnimeDto instance) =>
       'images': const LargeImageUrlConverter().toJson(instance.imageUrl),
       'synopsis': instance.synopsis,
       'score': instance.score,
-      'genres': instance.genres,
+      'genres': instance.genres.map((e) => e.toJson()).toList(),
       'episodes': instance.episodes,
       'rank': instance.rank,
     };

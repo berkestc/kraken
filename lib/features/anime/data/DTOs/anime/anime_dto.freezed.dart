@@ -189,7 +189,8 @@ class __$$_AnimeDtoCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_AnimeDto extends _AnimeDto {
   const _$_AnimeDto(
       {@JsonKey(name: "mal_id") required this.id,

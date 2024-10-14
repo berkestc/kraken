@@ -10,6 +10,7 @@ part 'anime_dto.g.dart';
 
 @freezed
 class AnimeDto with _$AnimeDto {
+  @JsonSerializable(explicitToJson: true)
   const factory AnimeDto({
     @JsonKey(name: "mal_id") required int id,
     required String title,

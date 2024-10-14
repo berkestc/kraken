@@ -28,8 +28,6 @@ mixin _$PaginatedDto<T> {
   @JsonKey(readValue: fromPaginationJson)
   bool get hasNextPage => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
-      throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaginatedDtoCopyWith<T, PaginatedDto<T>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -130,7 +128,9 @@ class __$$_PaginatedDtoCopyWithImpl<T, $Res>
 /// @nodoc
 
 @JsonSerializable(
-    fieldRename: FieldRename.snake, genericArgumentFactories: true)
+    fieldRename: FieldRename.snake,
+    genericArgumentFactories: true,
+    explicitToJson: true)
 class _$_PaginatedDto<T> extends _PaginatedDto<T> {
   const _$_PaginatedDto(
       {@JsonKey(name: "data") required final List<T> items,
@@ -186,11 +186,6 @@ class _$_PaginatedDto<T> extends _PaginatedDto<T> {
   @pragma('vm:prefer-inline')
   _$$_PaginatedDtoCopyWith<T, _$_PaginatedDto<T>> get copyWith =>
       __$$_PaginatedDtoCopyWithImpl<T, _$_PaginatedDto<T>>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson(Object? Function(T) toJsonT) {
-    return _$$_PaginatedDtoToJson<T>(this, toJsonT);
-  }
 }
 
 abstract class _PaginatedDto<T> extends PaginatedDto<T> {
