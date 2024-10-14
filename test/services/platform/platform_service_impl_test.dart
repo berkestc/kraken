@@ -7,7 +7,7 @@ import "package:kraken/services/platform/platform_service_impl.dart";
 
 void main() {
   late PlatformServiceImpl platformService;
-  const MethodChannel channel = MethodChannel(MethodChannelConstants.methodChannelName);
+  const channel = MethodChannel(MethodChannelConstants.methodChannelName);
 
   setUp(() {
     TestWidgetsFlutterBinding.ensureInitialized();

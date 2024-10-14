@@ -33,7 +33,6 @@ dependencies:
 dev_dependencies:
   auto_route_generator: ^6.2.0
   build_runner: ^2.3.3
-  flutter_gen_runner: ^5.4.0
   flutter_test:
     sdk: flutter
   freezed: ^2.4.1
@@ -45,7 +44,3 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
-flutter_gen:
-  assets:
-    enabled: true

@@ -92,7 +92,7 @@ class _Image extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final anime = context.read<Anime>();
+    final anime = context.watch<Anime>();
 
     return Hero(
       tag: anime.id,
@@ -117,7 +117,7 @@ class _Title extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final anime = context.read<Anime>();
+    final anime = context.watch<Anime>();
 
     return Text(
       anime.title,
@@ -131,7 +131,7 @@ class _Rating extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final anime = context.read<Anime>();
+    final anime = context.watch<Anime>();
 
     return Row(
       children: [
@@ -151,7 +151,7 @@ class _Synopsis extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final anime = context.read<Anime>();
+    final anime = context.watch<Anime>();
 
     return SliverPadding(
       padding: EdgeInsets.symmetric(horizontal: 8.r),
@@ -170,7 +170,7 @@ class _Genres extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final anime = context.read<Anime>();
+    final anime = context.watch<Anime>();
 
     return Text(
       anime.genres.map((e) => e.name).join(', '),
