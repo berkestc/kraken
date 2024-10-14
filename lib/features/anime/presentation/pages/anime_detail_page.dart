@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kraken/common/sliver_sized_box.dart';
+import 'package:kraken/constants/constants.dart';
 import 'package:kraken/core/injections/locator.dart';
 import 'package:kraken/features/anime/domain/models/character.dart';
 import 'package:kraken/features/anime/presentation/cubits/anime_details_cubit.dart';
@@ -13,13 +14,17 @@ import '../../../../core/models/failure/failure.dart';
 import '../../domain/models/anime.dart';
 
 @RoutePage()
-class AnimesDetailPage extends StatelessWidget {
+class AnimesDetailPage extends StatelessWidget implements AutoRouteWrapper {
   final Anime anime;
 
   const AnimesDetailPage({required this.anime});
 
   @override
-  Widget build(BuildContext context) {
+  Widget wrappedRoute(BuildContext context) {
+    if (isTestMode) {
+      return this;
+    }
+
     return MultiProvider(
       providers: [
         Provider.value(value: anime),
@@ -27,51 +32,56 @@ class AnimesDetailPage extends StatelessWidget {
           create: (context) => AnimeDetailsCubit(animeRepository: getIt(), animeId: anime.id),
         ),
       ],
-      child: Scaffold(
-        appBar: AppBar(title: const Text("Details")),
-        body: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.r),
-                    child: Column(
-                      children: [
-                        const _Image(),
-                        SizedBox(height: 12.h),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const _Title(),
-                                  SizedBox(height: 2.h),
-                                  const _Genres(),
-                                ],
-                              ),
+      child: this,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Details")),
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(8.r),
+                  child: Column(
+                    children: [
+                      const _Image(),
+                      SizedBox(height: 12.h),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const _Title(),
+                                SizedBox(height: 2.h),
+                                const _Genres(),
+                              ],
                             ),
-                            SizedBox(width: 8.w),
-                            const _Rating(),
-                          ],
-                        ),
-                        SizedBox(height: 12.h),
-                      ],
-                    ),
+                          ),
+                          SizedBox(width: 8.w),
+                          const _Rating(),
+                        ],
+                      ),
+                      SizedBox(height: 12.h),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            const _Synopsis(),
-            SliverSizedBox(height: 12.h),
-            const _CharactersTitle(),
-            SliverSizedBox(height: 12.h),
-            const _Characters(),
-            SliverSizedBox(height: 12.h),
-          ],
-        ),
+          ),
+          const _Synopsis(),
+          SliverSizedBox(height: 12.h),
+          const _CharactersTitle(),
+          SliverSizedBox(height: 12.h),
+          const _Characters(),
+          SliverSizedBox(height: 12.h),
+        ],
       ),
     );
   }
@@ -279,6 +289,7 @@ class _CharacterImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
+      key: ValueKey(imageUrl),
       height: 250.h,
       width: double.infinity,
       imageUrl: imageUrl,

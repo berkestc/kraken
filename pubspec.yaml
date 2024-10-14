@@ -15,7 +15,6 @@ dependencies:
   cross_connectivity: ^3.0.5
   cupertino_icons: ^1.0.6
   dio: ^5.7.0
-  easy_localization: ^3.0.7
   equatable: ^2.0.5
   firebase_core: ^2.24.2
   firebase_crashlytics: ^3.4.9
@@ -42,15 +41,10 @@ dev_dependencies:
   json_serializable: ^6.6.2
   lint: ^2.0.20
   mockito: ^5.4.0
+  mocktail: ^1.0.0
 
 flutter:
   uses-material-design: true
-
-  assets:
-    - assets/images/
-    - assets/icons/
-    - assets/fonts/
-    - assets/langs/
 
 flutter_gen:
   assets:

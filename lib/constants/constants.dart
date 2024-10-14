@@ -1,2 +1,5 @@
+import 'dart:io';
+
 const appName = "Kraken";
-const languagePath = "assets/langs";
+
+final isTestMode = Platform.environment.containsKey("FLUTTER_TEST");

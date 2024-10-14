@@ -9,28 +9,38 @@ import 'package:kraken/features/anime/domain/models/anime.dart';
 import 'package:kraken/features/anime/presentation/cubits/anime_cubit.dart';
 import 'package:kraken/router/router.dart';
 
+import '../../../../constants/constants.dart';
 import '../states/anime_state.dart';
 
 @RoutePage()
-class AnimesPage extends StatelessWidget {
+class AnimesPage extends StatelessWidget implements AutoRouteWrapper {
   const AnimesPage();
 
   @override
-  Widget build(BuildContext context) {
+  Widget wrappedRoute(BuildContext context) {
+    if (isTestMode) {
+      return this;
+    }
+
     return BlocProvider(
       create: (context) => AnimeCubit(animeRepository: getIt()),
-      child: Scaffold(
-        appBar: AppBar(title: const Text("Animes")),
-        body: BlocSelector<AnimeCubit, AnimeState, bool>(
-          selector: (state) => state.isLoading,
-          builder: (context, isLoading) {
-            if (isLoading) {
-              return const _Loading();
-            }
+      child: this,
+    );
+  }
 
-            return const _Animes();
-          },
-        ),
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Animes")),
+      body: BlocSelector<AnimeCubit, AnimeState, bool>(
+        selector: (state) => state.isLoading,
+        builder: (context, isLoading) {
+          if (isLoading) {
+            return const _Loading();
+          }
+
+          return const _Animes();
+        },
       ),
     );
   }
@@ -77,21 +87,21 @@ class _Animes extends HookWidget {
         childAspectRatio: 0.5,
       ),
       itemCount: animeState.animes.length,
-      itemBuilder: (context, index) => _AnimeItem(animeState.animes[index]),
+      itemBuilder: (context, index) => AnimeItem(animeState.animes[index]),
     );
   }
 }
 
-class _AnimeItem extends StatelessWidget {
+class AnimeItem extends StatelessWidget {
   final Anime anime;
 
-  const _AnimeItem(this.anime);
+  const AnimeItem(this.anime);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _AnimeImage(anime),
+        AnimeImage(anime),
         SizedBox(height: 4.r),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -144,15 +154,16 @@ class _Rating extends StatelessWidget {
   }
 }
 
-class _AnimeImage extends StatelessWidget {
+class AnimeImage extends StatelessWidget {
   final Anime anime;
 
-  const _AnimeImage(this.anime);
+  const AnimeImage(this.anime);
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
         onTap: () => context.router.push(AnimesDetailRoute(anime: anime)),
         child: Hero(
           tag: anime.id,
