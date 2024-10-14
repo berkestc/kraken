@@ -1,9 +1,9 @@
 import 'package:fpdart/fpdart.dart' hide id;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kraken/features/anime/data/DTOs/genre/genre_dto.dart';
 
 import '../../../domain/models/anime.dart';
 import '../../utils/converters.dart';
+import '../genre/genre_dto.dart';
 
 part 'anime_dto.freezed.dart';
 part 'anime_dto.g.dart';

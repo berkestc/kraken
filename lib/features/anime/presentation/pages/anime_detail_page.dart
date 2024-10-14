@@ -3,15 +3,15 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kraken/common/sliver_sized_box.dart';
-import 'package:kraken/constants/constants.dart';
-import 'package:kraken/core/injections/locator.dart';
-import 'package:kraken/features/anime/domain/models/character.dart';
-import 'package:kraken/features/anime/presentation/cubits/anime_details_cubit.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../common/sliver_sized_box.dart';
+import '../../../../constants/constants.dart';
+import '../../../../core/injections/locator.dart';
 import '../../../../core/models/failure/failure.dart';
 import '../../domain/models/anime.dart';
+import '../../domain/models/character.dart';
+import '../cubits/anime_details_cubit.dart';
 
 @RoutePage()
 class AnimesDetailPage extends StatelessWidget implements AutoRouteWrapper {

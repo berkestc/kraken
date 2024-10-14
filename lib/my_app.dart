@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kraken/constants/constants.dart';
-import 'package:kraken/constants/sizes.dart';
-import 'package:kraken/core/injections/locator.dart';
-import 'package:kraken/router/router.dart';
-import 'package:kraken/theme/theme.dart';
+import 'constants/constants.dart';
+import 'constants/sizes.dart';
+import 'core/injections/locator.dart';
+import 'router/router.dart';
+import 'theme/theme.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp();

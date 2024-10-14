@@ -1,10 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:kraken/features/anime/domain/repositories/anime_repository.dart';
 
 import '../../../../core/models/failure/failure.dart';
 import '../../domain/models/anime.dart';
 import '../../domain/models/paginated.dart';
+import '../../domain/repositories/anime_repository.dart';
 import '../states/anime_state.dart';
 
 class AnimeCubit extends Cubit<AnimeState> {

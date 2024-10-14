@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kraken/features/anime/data/utils/converters.dart';
-import 'package:kraken/features/anime/domain/models/paginated.dart';
+
+import '../../../domain/models/paginated.dart';
+import '../../utils/converters.dart';
 
 part 'paginated_dto.freezed.dart';
 part 'paginated_dto.g.dart';

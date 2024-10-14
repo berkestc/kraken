@@ -1,9 +1,9 @@
 import 'package:cross_connectivity/cross_connectivity.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:kraken/constants/durations.dart';
-import 'package:kraken/constants/endpoints.dart';
 
+import '../../constants/durations.dart';
+import '../../constants/endpoints.dart';
 import '../../router/router.dart';
 
 @module

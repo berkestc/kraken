@@ -1,9 +1,9 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:kraken/features/anime/domain/models/paginated.dart';
 
 import '../../../../core/models/failure/failure.dart';
 import '../models/anime.dart';
 import '../models/character.dart';
+import '../models/paginated.dart';
 
 typedef OnAnimesFetched = void Function(Either<Failure, Paginated<Anime>>);
 

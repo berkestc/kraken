@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kraken/features/anime/data/utils/converters.dart';
 
 import '../../../domain/models/character.dart';
+import '../../utils/converters.dart';
 
 part 'character_dto.freezed.dart';
 part 'character_dto.g.dart';

@@ -6,8 +6,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:kraken/constants/system_ui_overlay_styles.dart';
-import 'package:kraken/core/injections/locator.dart';
+import 'constants/system_ui_overlay_styles.dart';
+import 'core/injections/locator.dart';
 
 import 'firebase_options.dart';
 

@@ -1,8 +1,8 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kraken/features/anime/domain/models/character.dart';
 
 import '../../../../core/models/failure/failure.dart';
+import '../../domain/models/character.dart';
 
 part 'anime_details_state.freezed.dart';
 

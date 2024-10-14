@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kraken/features/anime/domain/repositories/anime_repository.dart';
+import '../../domain/repositories/anime_repository.dart';
 
 import '../states/anime_details_state.dart';
 
